@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.3.4.1.min.js"></script>
+</head>
+<body>
+        用户名：<input type="text" name="username" id="user">
+        密码：<input type="password" name="password" id="pass">
+        <button id="btn">登录</button>
+        <script>
+            $(function(){
+                $("#btn").click(function(){
+                    $.ajax({
+                        url:"http://localhost:3000/login",
+                        type:"get",
+                        dataType:"json",
+                        timeout:2000,
+                        async:false,
+                        data:{
+                            username:$("#user").val(),
+                            password:$("#pass").val()
+                        }
+                    }).done(function(result){
+                        console.log(result)
+                    })
+                })
+            })
+        </script>
+</body>
+</html>
